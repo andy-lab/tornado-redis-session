@@ -4,6 +4,7 @@ import datetime
 from hashlib import sha1
 
 import redis
+from rediscluster import StrictRedisCluster
 from tornado.web import RequestHandler
 
 
@@ -36,7 +37,11 @@ class SessionManager(object):
 class RedisSessionHandler(RequestHandler):
     def __init__(self, *args, **kwargs):
         super(RedisSessionHandler, self).__init__(*args, **kwargs)
-        self.redis = redis.Redis(**self.settings['redis'])
+        cfg = **self.settings['redis']
+        if 'startup_nodes' in cfg:
+            self.redis = StrictRedisCluster(cfg)
+        else:
+            self.redis = redis.Redis(cfg)
         self.__session_manager = SessionManager(self.redis)
 
     def get_sessionid(self):

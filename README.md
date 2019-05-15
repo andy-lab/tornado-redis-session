@@ -43,7 +43,14 @@ def run():
             'host': 'localhost',
             'db': 9
         }
-        # or redis = {'startup_nodes':[{'host':'IP1', 'port':'6379'}, {'host':'IP2', 'port':'6379'}, {'host':'IP3', 'po    rt':'6379'}], 'password':'***'}
+        # or redis = {
+        #    'startup_nodes':[
+        #        {'host':'redis_server_1', 'port':'6379'},
+        #        {'host':'redis_server_2', 'port':'6379'},
+        #        {'host':'redis_server_3', 'port':'6379'}
+        #    ],
+        #    'password':'***'
+        #}
     )
     http_server = HTTPServer(app)
     http_server.listen(8887)

@@ -1,9 +1,11 @@
-# tornado-redis-session
+# tornado-rediscluster-session
 Server side session middleware based on redis or rediscluster
 
 ### INSTALL
 ```
-### pip install tornado-redis-session
+git clone https://github.com/andy-lab/tornado-rediscluster-session
+cd tornado-rediscluster-session
+python3 setup.py
 ```
 
 ### USAGE
@@ -12,7 +14,7 @@ from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
 from tornado.web import authenticated, Application
 
-from tornado_redis_session import RedisSessionHandler
+from tornado_rediscluster_session import RedisSessionHandler
 
 
 class LoginHandler(RedisSessionHandler):

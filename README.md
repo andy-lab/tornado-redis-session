@@ -1,9 +1,9 @@
 # tornado-redis-session
-Server side session middleware based on redis
+Server side session middleware based on redis or rediscluster
 
 ### INSTALL
 ```
-pip install tornado-redis-session
+### pip install tornado-redis-session
 ```
 
 ### USAGE
@@ -43,6 +43,7 @@ def run():
             'host': 'localhost',
             'db': 9
         }
+        # or redis = {'startup_nodes':[{'host':'IP1', 'port':'6379'}, {'host':'IP2', 'port':'6379'}, {'host':'IP3', 'po    rt':'6379'}], 'password':'***'}
     )
     http_server = HTTPServer(app)
     http_server.listen(8887)
